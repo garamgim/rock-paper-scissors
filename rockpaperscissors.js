@@ -10,17 +10,17 @@ function playRound(player, computer) {
     switch (true) {
 
         case (player == computer):
-            console.log("DRAW!");
+            return "DRAW!";
             break;
 
         case (player == "scissors" && computer == "paper"):
         case (player == "paper" && computer == "rock"):
         case (player == "rock" && computer == "scissors"):
-            console.log("You Won!");
+            return "You Won!";
             break;
 
         default:
-            console.log("You Lose!");
+            return "You Lose!";
             break;
 
     }
@@ -31,9 +31,25 @@ function game() {
     const rps = ["rock", "paper", "scissors"];
 
     for (let round = 0; round < 5;) {
-        let playerSelection = prompt("Please type rock or paper or scissors!");
+
+        console.log(`Round ${round + 1} / 5!`);
+
+        let score = 0;
+        let playerSelection = prompt("Please type rock or paper or scissors!: ");
         let computerSelection = getComputerChoice(rps);
-        playRound(playerSelection, computerSelection);
+        let result = playRound(playerSelection, computerSelection);
+
+        if (result == "You Won!") {
+            score++;
+        }
+
+        console.log(result)
+        console.log(`Score: ${score}`);
+
+        if (round == 4) {
+            console.log("The End");
+        }
+
         round++;
     }
 
