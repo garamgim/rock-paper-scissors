@@ -30,11 +30,12 @@ function game() {
 
     const rps = ["rock", "paper", "scissors"];
 
+    let score = 0;
+
     for (let round = 0; round < 5;) {
 
         console.log(`Round ${round + 1} / 5!`);
 
-        let score = 0;
         let playerSelection = prompt("Please type rock or paper or scissors!: ");
         let computerSelection = getComputerChoice(rps);
         let result = playRound(playerSelection, computerSelection);
@@ -56,3 +57,4 @@ function game() {
 }
 
 game();
+
