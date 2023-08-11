@@ -1,3 +1,5 @@
+/* https: //colorhunt.co/palette/c0eee4f8f988ffcac8ff9e9e */
+
 * {
     cursor: url('https://fav.farm/🍡') 15 0, auto;
     font-family: 'Roboto Mono', monospace;
@@ -41,14 +43,15 @@ img.profile {
     display: inline;
     width: 5em;
     height: 5em;
-    margin: 0 10px;
+    margin: 0;
     white-space: nowrap;
+    border-radius: 50%;
 }
 
 p.score {
     display: inline;
     font-size: 4em;
-    margin: 0 10px;
+    margin: 0 15px;
     width: 50px;
     text-align: center;
 }
