@@ -1,8 +1,14 @@
+// EventListner for Buttons
 
+let buttons = document.querySelectorAll('button');
 
-function getComputerChoice(arr) {
-    return arr[Math.floor(Math.random() * 3)];
+function clicked(e) {
+    game(e.target.innerHTML);
 }
+
+buttons.forEach(button => button.addEventListener('click', clicked));
+
+// Game Logic
 
 function playRound(player, computer) {
     player = player.toLowerCase();
@@ -16,7 +22,7 @@ function playRound(player, computer) {
         case (player == "scissors" && computer == "paper"):
         case (player == "paper" && computer == "rock"):
         case (player == "rock" && computer == "scissors"):
-            return "You Won!";
+            return "You Win!";
             break;
 
         default:
@@ -26,35 +32,64 @@ function playRound(player, computer) {
     }
 }
 
-function game() {
+function getComputerChoice(arr) {
+    return arr[Math.floor(Math.random() * 3)];
+}
+
+let playerScoreInt = 0;
+let computerScoreInt = 0;
+
+let playerScorePrint = document.getElementById('playerscore');
+let computerScorePrint = document.getElementById('computerscore');
+let centerScoreBoard = document.getElementById('winner');
+
+
+function game(playerSelection) {
 
     const rps = ["rock", "paper", "scissors"];
 
-    let score = 0;
+    let computerSelection = getComputerChoice(rps);
+    let result = playRound(playerSelection, computerSelection);
 
-    for (let round = 0; round < 5;) {
+    switch (true) {
 
-        console.log(`Round ${round + 1} / 5!`);
+        case (playerScoreInt < 4 && computerScoreInt < 4):
 
-        let playerSelection = prompt("Please type rock or paper or scissors!: ");
-        let computerSelection = getComputerChoice(rps);
-        let result = playRound(playerSelection, computerSelection);
+            if (result == "You Win!") {
+                playerScoreInt++;
+                playerScorePrint.innerHTML = playerScoreInt;
+            } else if (result == "You Lose!") {
+                computerScoreInt++;
+                computerScorePrint.innerHTML = computerScoreInt;
+            }
+            centerScoreBoard.innerHTML = result;
+            break;
 
-        if (result == "You Won!") {
-            score++;
-        }
 
-        console.log(result)
-        console.log(`Score: ${score}`);
+        case (playerScoreInt === 4 && computerScoreInt < 4):
 
-        if (round == 4) {
-            console.log("The End");
-        }
+            playerScoreInt++;
+            playerScorePrint.innerHTML = playerScoreInt;
+            centerScoreBoard.innerHTML = "WINNER: YOU!";
+            break;
 
-        round++;
+
+        case (playerScoreInt < 4 && computerScoreInt === 4):
+
+            computerScoreInt++;
+            computerScorePrint.innerHTML = computerScoreInt;
+            centerScoreBoard.innerHTML = "WINNER: VILLAIN";
+            break;
+
+
+        default:
+
+            centerScoreBoard.innerHTML = "REFRESH IF YOU WANT TO TRY AGAIN...";
+            break;
+
     }
 
 }
 
-game();
+
 

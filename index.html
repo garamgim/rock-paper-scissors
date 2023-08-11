@@ -5,11 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="rockpaperscissors.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://fav.farm/🍡" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-
+    <section class="player">
+        <div class="top">
+            <img src="image/player.jpg" class="profile">
+            <p class="score" id="playerscore">0</p>
+        </div>
+        <div class="middle">
+            <img src="" class="playerselection" id="selection">
+            <p class="player">YOU</p>
+        </div>
+        <div class="bottom">
+            <button>Rock</button>
+            <button>Paper</button>
+            <button>Scissors</button>
+        </div>
+    </section>
+    <section class="scoreboard">
+        <div class="scoreboard">
+            <span id="winner">SCORE BOARD</span>
+        </div>
+    </section>
+    <section class="computer">
+        <div class="top">
+            <img src="image/computer.jpeg" class="profile">
+            <p class="score" id="computerscore">0</p>
+        </div>
+        <div class="middle">
+            <img src="" class="computerselection" id="selection">
+            <p class="player">VILLAIN</p>
+        </div>
+        <div class="bottom">
+            <p class="computersay">BEAT ME IF YOU CAN...</p>
+        </div>
+    </section>
 </body>
+
+<script src="rockpaperscissors.js"></script>
 
 </html>
