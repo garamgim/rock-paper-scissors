@@ -6,9 +6,9 @@ Link to the assignment 2 (adding UI): https://www.theodinproject.com/lessons/fou
 <br>
 
 ## About
-I first made Rock paper scissors Jascript console game according to assignment 1, then after moving to assignment 2, made a HTML & CSS Website and linked it to the previous game with some refactoring. 
+I first made a Rock paper scissors Jascript console game according to the assignment 1, then after moving to the assignment 2, made a HTML & CSS Website and linked it to the previous game with refactoring.
 <br><br>
-What I maily learned in this stage is how to use DOM methods. Planning for the logic itself was not very difficult but making it work was another story. 
+What I mainly learned in this stage is how to use DOM methods. Planning for the logic itself was not very difficult but making it work was another story.
 <br><br>
 I will keep working on this repo as I want to try more DOM methods & make it look better. 
 
