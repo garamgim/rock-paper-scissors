@@ -1,15 +1,17 @@
 /* https: //colorhunt.co/palette/c0eee4f8f988ffcac8ff9e9e */
 
+
+/* General Style */
+
+
 * {
     cursor: url('https://fav.farm/🍡') 15 0, auto;
     font-family: 'Roboto Mono', monospace;
 }
 
-
 html {
     height: 100%;
 }
-
 
 body {
     height: 100%;
@@ -17,13 +19,15 @@ body {
     justify-content: space-evenly;
     align-items: center;
     margin: auto;
-    background-color: #C0EEE4;
+    background-image: url('image/glitter.jpeg');
 }
 
 button {
     background-color: #F8F988;
     border: solid 1px #F8F988;
+    border-radius: 10px;
     color: hotpink;
+    padding: 5px 10px;
     margin: 2px;
     font-size: 14px;
 }
@@ -31,6 +35,18 @@ button {
 button:active {
     background-color: #d4d565;
 }
+
+section.player,
+section.computer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 440px;
+    background-color: #C0EEE495;
+    border-radius: 20px;
+}
+
 
 /* Div Top */
 
@@ -43,7 +59,7 @@ img.profile {
     display: inline;
     width: 5em;
     height: 5em;
-    margin: 0;
+    margin: 8px 0;
     white-space: nowrap;
     border-radius: 50%;
 }
@@ -51,18 +67,18 @@ img.profile {
 p.score {
     display: inline;
     font-size: 4em;
-    margin: 0 15px;
+    margin: 0 10px;
     width: 50px;
     text-align: center;
 }
 
+
 /* Div Middle */
 
-img#selection {
-    width: 200px;
-    height: 200px;
-    border: solid pink 0.5px;
-    margin: 10px;
+p.hand {
+    text-align: center;
+    line-height: 0;
+    font-size: 120px;
 }
 
 p.player {
@@ -71,16 +87,109 @@ p.player {
     margin: 10px;
 }
 
+
 /* Div Bottom*/
 
 div.bottom {
     text-align: center;
 }
 
+
 /* Scoreboard */
 
 div.scoreboard {
-    font-size: 2em;
+    width: 400px;
     text-align: center;
-    width: 300px;
+}
+
+#winner {
+    padding: 0 10px;
+    font-size: 60px;
+    font-style: italic;
+    text-align: center;
+    background-color: #FF9E9E;
+}
+
+
+/* Media Query */
+
+@media (min-width: 500px) and (max-width:880px) {
+
+    section.player,
+    section.computer {
+        width: 200px;
+        height: 500px;
+    }
+
+    div.scoreboard {
+        width: 200px;
+        text-align: center;
+    }
+
+    #winner {
+        font-size: 40px;
+    }
+
+
+}
+
+@media (max-width: 500px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    button {
+        border-radius: 5px;
+        padding: 2px 5px;
+        margin: 0;
+        font-size: 10px;
+    }
+
+    section.player,
+    section.computer {
+        background-color: transparent;
+        height: 250px;
+    }
+
+    img.profile {
+        display: inline;
+        width: 3em;
+        height: 3em;
+        margin: 1px 0;
+    }
+
+    p.score {
+        display: inline;
+        font-size: 2em;
+        margin: 0 5px;
+        width: 25px;
+        text-align: center;
+    }
+
+
+    div.middle {
+        background-color: #f8e4e3;
+        border-radius: 20%;
+    }
+
+    p.hand {
+        font-size: 60px;
+    }
+
+    p.player {
+        text-align: center;
+        font-size: 2em;
+        margin: 0;
+    }
+
+    #winner {
+        margin: 10px;
+        font-size: 30px;
+        text-align: center;
+        background-color: #C0EEE4;
+    }
+
 }
