@@ -20,6 +20,7 @@ body {
     align-items: center;
     margin: auto;
     background-image: url('image/glitter.jpeg');
+    background-size: cover;
 }
 
 button {
