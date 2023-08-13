@@ -113,22 +113,87 @@ function game(playerSelection) {
 
         case (playerScoreInt === 4 && computerScoreInt < 4):
 
-            playerScoreInt++;
-            playerScorePrint.innerHTML = playerScoreInt;
-            centerScoreBoard.innerHTML = "WINNER: YOU!";
-            playerImg.src = "image/playerwin.png";
-            computerImg.src = "image/computerlose.png";
-            break;
+            if (result == "You Win!") {
 
+                playerScoreInt++;
+                playerScorePrint.innerHTML = playerScoreInt;
+                playerImg.src = "image/playerwin.png";
+                computerImg.src = "image/computerlose.png";
+                centerScoreBoard.innerHTML = "WINNER: YOU!";
+
+
+            } else if (result == "You Lose!") {
+
+                computerScoreInt++;
+                computerScorePrint.innerHTML = computerScoreInt;
+                playerImg.src = "image/playerlose.png";
+                computerImg.src = "image/computerwin.png";
+                centerScoreBoard.innerHTML = result;
+
+            } else {
+
+                playerImg.src = "image/playerlose.png";
+                computerImg.src = "image/computerlose.png";
+                centerScoreBoard.innerHTML = result;
+
+            }
+
+            break;
 
         case (playerScoreInt < 4 && computerScoreInt === 4):
 
-            computerScoreInt++;
-            computerScorePrint.innerHTML = computerScoreInt;
-            centerScoreBoard.innerHTML = "WINNER: VILLAIN...";
-            playerImg.src = "image/playerlose.png";
-            computerImg.src = "image/computerwin.png";
+            if (result == "You Win!") {
+
+                playerScoreInt++;
+                playerScorePrint.innerHTML = playerScoreInt;
+                playerImg.src = "image/playerwin.png";
+                computerImg.src = "image/computerlose.png";
+                centerScoreBoard.innerHTML = result;
+
+            } else if (result == "You Lose!") {
+
+                computerScoreInt++;
+                computerScorePrint.innerHTML = computerScoreInt;
+                playerImg.src = "image/playerlose.png";
+                computerImg.src = "image/computerwin.png";
+                centerScoreBoard.innerHTML = "WINNER: VILLAIN...";
+
+            } else {
+
+                playerImg.src = "image/playerlose.png";
+                computerImg.src = "image/computerlose.png";
+                centerScoreBoard.innerHTML = result;
+
+            }
+
             break;
+
+
+        case (playerScoreInt === 4 && computerScoreInt === 4):
+
+            if (result == "You Win!") {
+
+                playerScoreInt++;
+                playerScorePrint.innerHTML = playerScoreInt;
+                playerImg.src = "image/playerwin.png";
+                computerImg.src = "image/computerlose.png";
+                centerScoreBoard.innerHTML = "WINNER: YOU!";
+
+            } else if (result == "You Lose!") {
+
+                computerScoreInt++;
+                computerScorePrint.innerHTML = computerScoreInt;
+                playerImg.src = "image/playerlose.png";
+                computerImg.src = "image/computerwin.png";
+                centerScoreBoard.innerHTML = "WINNER: VILLAIN...";
+
+            } else {
+
+                playerImg.src = "image/playerlose.png";
+                computerImg.src = "image/computerlose.png";
+                centerScoreBoard.innerHTML = result;
+
+            }
 
 
         default:
