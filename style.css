@@ -186,6 +186,10 @@ div.scoreboard {
         margin: 0;
     }
 
+    div.scoreboard {
+        width: 300px;
+    }
+
     #winner {
         margin: 10px;
         font-size: 30px;
