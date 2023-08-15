@@ -1,3 +1,4 @@
+
 // EventListner for Buttons
 
 let buttons = document.querySelectorAll('button');
@@ -10,25 +11,26 @@ buttons.forEach(button => button.addEventListener('click', clicked));
 
 
 
-// Game 
+
+// Function returns game result
 
 function playRound(player, computer) {
     player = player.toLowerCase();
 
     switch (true) {
 
+        case (player == "scissors" && computer == "paper"):
+        case (player == "paper" && computer == "rock"):
+        case (player == "rock" && computer == "scissors"):
+            return true;
+            break;
+
         case (player == computer):
             return "DRAW!";
             break;
 
-        case (player == "scissors" && computer == "paper"):
-        case (player == "paper" && computer == "rock"):
-        case (player == "rock" && computer == "scissors"):
-            return "You Win!";
-            break;
-
         default:
-            return "You Lose!";
+            return false;
             break;
 
     }
@@ -36,12 +38,13 @@ function playRound(player, computer) {
 
 
 
-function changeEmoji(str, id) {
 
+// Function changes big hand emojis
+
+function changeEmoji(str, id) {
     let emoji = document.getElementById(id);
 
     switch (str.toLowerCase()) {
-
         case ("rock"):
             emoji.innerHTML = "&#x270A";
             break;
@@ -51,16 +54,13 @@ function changeEmoji(str, id) {
         default:
             emoji.innerHTML = "&#x270C";
             break;
-
     }
-
 }
 
 
-function getComputerChoice(arr) {
-    return arr[Math.floor(Math.random() * 3)];
-}
 
+
+// Variables, Document objects for Game
 
 let playerScoreInt = 0;
 let computerScoreInt = 0;
@@ -72,6 +72,14 @@ let centerScoreBoard = document.getElementById('winner');
 let playerImg = document.getElementById('playerprofile');
 let computerImg = document.getElementById('computerprofile');
 
+function getComputerChoice(arr) {
+    return arr[Math.floor(Math.random() * 3)];
+}
+
+
+
+
+// Main Game
 
 function game(playerSelection) {
 
@@ -81,129 +89,57 @@ function game(playerSelection) {
     changeEmoji(playerSelection, "playerhand");
     changeEmoji(computerSelection, "computerhand");
 
-    let result = playRound(playerSelection, computerSelection);
-
-    switch (true) {
-
-        case (playerScoreInt < 4 && computerScoreInt < 4):
-
-            if (result == "You Win!") {
-
-                playerScoreInt++;
-                playerScorePrint.innerHTML = playerScoreInt;
-                playerImg.src = "image/playerwin.png";
-                computerImg.src = "image/computerlose.png";
-
-            } else if (result == "You Lose!") {
-
-                computerScoreInt++;
-                computerScorePrint.innerHTML = computerScoreInt;
-                playerImg.src = "image/playerlose.png";
-                computerImg.src = "image/computerwin.png";
-
-            } else {
-
-                playerImg.src = "image/playerlose.png";
-                computerImg.src = "image/computerlose.png";
-
-            }
-            centerScoreBoard.innerHTML = result;
-            break;
+    let win = playRound(playerSelection, computerSelection);
 
 
-        case (playerScoreInt === 4 && computerScoreInt < 4):
+    if (playerScoreInt < 5 && computerScoreInt < 5) {
 
-            if (result == "You Win!") {
+        if (win === true) {
+            playerWin();
+        } else if (win === false) {
+            playerLose();
+        } else {
+            draw();
+        }
 
-                playerScoreInt++;
-                playerScorePrint.innerHTML = playerScoreInt;
-                playerImg.src = "image/playerwin.png";
-                computerImg.src = "image/computerlose.png";
-                centerScoreBoard.innerHTML = "WINNER: YOU!";
+    }
 
+    // FINAL GAME
 
-            } else if (result == "You Lose!") {
-
-                computerScoreInt++;
-                computerScorePrint.innerHTML = computerScoreInt;
-                playerImg.src = "image/playerlose.png";
-                computerImg.src = "image/computerwin.png";
-                centerScoreBoard.innerHTML = result;
-
-            } else {
-
-                playerImg.src = "image/playerlose.png";
-                computerImg.src = "image/computerlose.png";
-                centerScoreBoard.innerHTML = result;
-
-            }
-
-            break;
-
-        case (playerScoreInt < 4 && computerScoreInt === 4):
-
-            if (result == "You Win!") {
-
-                playerScoreInt++;
-                playerScorePrint.innerHTML = playerScoreInt;
-                playerImg.src = "image/playerwin.png";
-                computerImg.src = "image/computerlose.png";
-                centerScoreBoard.innerHTML = result;
-
-            } else if (result == "You Lose!") {
-
-                computerScoreInt++;
-                computerScorePrint.innerHTML = computerScoreInt;
-                playerImg.src = "image/playerlose.png";
-                computerImg.src = "image/computerwin.png";
-                centerScoreBoard.innerHTML = "WINNER: VILLAIN...";
-
-            } else {
-
-                playerImg.src = "image/playerlose.png";
-                computerImg.src = "image/computerlose.png";
-                centerScoreBoard.innerHTML = result;
-
-            }
-
-            break;
-
-
-        case (playerScoreInt === 4 && computerScoreInt === 4):
-
-            if (result == "You Win!") {
-
-                playerScoreInt++;
-                playerScorePrint.innerHTML = playerScoreInt;
-                playerImg.src = "image/playerwin.png";
-                computerImg.src = "image/computerlose.png";
-                centerScoreBoard.innerHTML = "WINNER: YOU!";
-
-            } else if (result == "You Lose!") {
-
-                computerScoreInt++;
-                computerScorePrint.innerHTML = computerScoreInt;
-                playerImg.src = "image/playerlose.png";
-                computerImg.src = "image/computerwin.png";
-                centerScoreBoard.innerHTML = "WINNER: VILLAIN...";
-
-            } else {
-
-                playerImg.src = "image/playerlose.png";
-                computerImg.src = "image/computerlose.png";
-                centerScoreBoard.innerHTML = result;
-
-            }
-
-
-        default:
-
-            centerScoreBoard.innerHTML = "REFRESH IF YOU WANT TO TRY AGAIN...";
-            break;
-
+    if (playerScoreInt === 5) {
+        centerScoreBoard.innerHTML = "GAME OVER!!! WINNER: YOU";
+    } else if (computerScoreInt === 5) {
+        centerScoreBoard.innerHTML = "GAME OVER!!! WINNER: VILLAIN";
     }
 
 }
 
+
+
+
+
+// Functions prints score & result
+
+function playerWin() {
+    playerScoreInt++;
+    playerScorePrint.innerHTML = playerScoreInt;
+    playerImg.src = "image/playerwin.png";
+    computerImg.src = "image/computerlose.png";
+    centerScoreBoard.innerHTML = "YOU WIN!";
+}
+
+function playerLose() {
+    computerScoreInt++;
+    computerScorePrint.innerHTML = computerScoreInt;
+    playerImg.src = "image/playerlose.png";
+    computerImg.src = "image/computerwin.png";
+    centerScoreBoard.innerHTML = "YOU LOSE!";
+}
+
+function draw() {
+    playerImg.src = "image/playerlose.png";
+    computerImg.src = "image/computerlose.png";
+    centerScoreBoard.innerHTML = "DRAW";
+}
 
 
